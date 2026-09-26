@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RojasWebs — Edgar's web development learning portfolio.">
+    <title>RojasWebs | Learning Portfolio</title>
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+    <script src="{% static 'website/js/main.js' %}" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+        <a class="brand" href="#about" aria-label="RojasWebs home">RojasWebs</a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span class="sr-only">Toggle navigation</span>
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#learning">Learning</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="about" class="about section-anchor">
+            <div class="profile-panel reveal-section">
+                <img class="profile-photo"
+                     src="{% static 'website/images/edgar-portrait.png' %}"
+                     alt="Portrait of Edgar">
+
+                <h1>Hello, I’m Edgar</h1>
+                <p class="role">Web Developer</p>
+
+                <div class="social-links" aria-label="Social links">
+                    <a href="#contact" aria-label="Contact Edgar">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M6.5 8.5h11v7h-11z"></path>
+                            <path d="m7 9 5 4 5-4"></path>
+                        </svg>
+                    </a>
+
+                    <a href="https://github.com/rojed2563" target="_blank" rel="noopener noreferrer" aria-label="Edgar on GitHub">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2.8a9.4 9.4 0 0 0-3 18.3c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A9.4 9.4 0 0 0 12 2.8z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn profile">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="1.5"></rect>
+                            <circle cx="7.5" cy="8" r="1.2" class="icon-cutout"></circle>
+                            <path class="icon-cutout" d="M6.4 10.2h2.2V18H6.4zM10.8 10.2H13v1.1c.7-.9 1.6-1.4 2.8-1.4 2 0 3.2 1.3 3.2 3.8V18h-2.3v-3.8c0-1.3-.4-2.1-1.5-2.1-1.2 0-2 1-2 2.5V18h-2.4z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="about-copy reveal-section">
+                <p class="eyebrow">About</p>
+                <h2>About Me</h2>
+
+                <p>
+                    I’m a web developer learning to design, build, and maintain modern
+                    websites and web applications. I’m currently learning Django, Python, Linux,
+                    and web development by building real projects and working with a small home lab.
+                </p>
+
+                <p>
+                    I also operate an Ubuntu Linux home server and a segmented home network,
+                    which give me hands-on experience with Linux administration, networking,
+                    security, automation, and self-hosting.
+                </p>
+
+                <p>
+                    RojasWebs is both my portfolio and an ongoing learning project. This site
+                    documents what I create, what I learn, and how each project improves over time.
+                </p>
+
+                <div class="about-actions">
+                    <a class="button button-primary" href="#projects">View My Projects</a>
+                    <a class="button button-secondary" href="#learning">
+                        What I’m Learning <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="learning" class="learning section-anchor reveal-section">
+            <div class="section-heading">
+                <p class="eyebrow">Current focus</p>
+                <h2>What I’m Learning</h2>
+                <p>
+                    These are the main areas I’m developing through coursework,
+                    personal projects, and hands-on work in my home lab.
+                </p>
+            </div>
+
+            <div class="learning-grid">
+                <article class="learning-card">
+                    <span class="card-icon">&lt;/&gt;</span>
+                    <h3>Django</h3>
+                    <p>Building structured web applications with templates, views, URLs, forms, databases, and production settings.</p>
+                </article>
+
+                <article class="learning-card">
+                    <span class="card-icon">{ }</span>
+                    <h3>Python</h3>
+                    <p>Improving my programming fundamentals and learning how Python powers web applications and automation tools.</p>
+                </article>
+
+                <article class="learning-card">
+                    <span class="card-icon">HTML</span>
+                    <h3>HTML and CSS</h3>
+                    <p>Creating accessible, responsive, and visually clear layouts for desktop and mobile browsers.</p>
+                </article>
+
+                <article class="learning-card">
+                    <span class="card-icon">Git</span>
+                    <h3>Git and GitHub</h3>
+                    <p>Tracking changes, reviewing differences, working safely with repositories, and publishing projects.</p>
+                </article>
+
+                <article class="learning-card">
+                    <span class="card-icon">Linux</span>
+                    <h3>Linux</h3>
+                    <p>Administering Ubuntu Linux, managing packages and services, monitoring system health, and using the command line.</p>
+                </article>
+
+                <article class="learning-card">
+                    <span class="card-icon">Secure</span>
+                    <h3>Networking and Security</h3>
+                    <p>Learning private networking, VLAN segmentation, firewalls, secure remote access, DNS, and least-privilege administration.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="projects section-anchor reveal-section">
+            <div class="section-heading">
+                <p class="eyebrow">Selected work</p>
+                <h2>Projects</h2>
+                <p>A growing collection of projects I’m building and improving as I learn.</p>
+            </div>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <p class="project-type">Django portfolio</p>
+                    <h3>RojasWebs</h3>
+                    <p>
+                        A personal portfolio and learning site built with Django,
+                        responsive HTML, CSS, and JavaScript.
+                    </p>
+                    <a href="https://github.com/rojed2563/rojaswebs" target="_blank" rel="noopener noreferrer">
+                        View repository →
+                    </a>
+                </article>
+
+                <article class="project-card">
+                    <p class="project-type">Home lab</p>
+                    <h3>Ubuntu Home Server</h3>
+                    <p>
+                        A practical environment for Linux administration, Pi-hole,
+                        networking, security, automation, and self-hosting.
+                    </p>
+                    <a href="#contact">Project notes coming soon →</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section-anchor reveal-section">
+            <div class="section-heading">
+                <p class="eyebrow">Contact</p>
+                <h2>Get in Touch</h2>
+                <p>
+                    I’m open to connecting, sharing what I’m learning,
+                    and discussing entry-level web-development opportunities.
+                </p>
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="form-success" role="status">
+                        ✓ {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form class="contact-form" method="post" action="#contact">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 RojasWebs. Built with Django.</p>
+    </footer>
+</body>
+</html>
