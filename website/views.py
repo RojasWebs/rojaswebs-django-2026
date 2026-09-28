@@ -36,7 +36,7 @@ def home(request):
                     resend.Emails.send(
                         {
                             "from": "RojasWebs Contact Form <contact@rojaswebs.com>",
-                            "to": ["contact.rojaswebspas.diaphragm633@passmail.net"],
+                            "to": ["contact@rojaswebs.com"],
                             "reply_to": email,
                             "subject": f"RojasWebs contact from {name}",
                             "text": (
