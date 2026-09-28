@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RojasWebs — Edgar's web development learning portfolio.">
-    <title>RojasWebs | Learning Portfolio</title>
+    <meta name="description" content="RojasWebs — development portfolio.">
+    <title>RojasWebs | Development Portfolio</title>
+    <link rel="icon" type="image/png" href="{% static 'website/images/rw_favicon.png' %}">
     <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
     <script src="{% static 'website/js/main.js' %}" defer></script>
 </head>
@@ -197,17 +198,20 @@
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" value="{{ form_name|default:'' }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
+                    <input type="email" id="email" name="email" value="{{ form_email|default:'' }}" required>
+                
+                {% if email_error %}
+                    <p class="form-error">{{ email_error }}</p>
+                {% endif %}
+            </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
+                    <textarea id="message" name="message" rows="6" required>{{ form_message|default:'' }}</textarea>
                 </div>
 
                 <button type="submit">Send Message</button>
