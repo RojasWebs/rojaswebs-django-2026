@@ -1,61 +1,77 @@
-# RojasWebs Django Mockup
+# RojasWebs
 
-A ready-to-run Django version of the one-page RojasWebs portfolio mockup.
+RojasWebs is my personal developer portfolio and an ongoing Django project built to showcase my work and document my growth as a web developer.
 
-## Open in VS Code
+## About
 
-1. Extract the ZIP.
-2. Open the `rojaswebs_django_mockup` folder in VS Code.
-3. Open the VS Code terminal.
-4. Create a virtual environment:
+The site is built with Django and self-hosted on Linux.
 
-   **Windows PowerShell**
-   ```powershell
-   py -m venv .venv
-   .\.venv\Scripts\Activate.ps1
-   ```
+Current features include:
 
-   **Git Bash on Windows**
-   ```bash
-   py -m venv .venv
-   source .venv/Scripts/activate
-   ```
+- Responsive portfolio layout
+- Project links
+- GitHub and LinkedIn links
+- Working contact form
+- Production deployment
+- Web traffic monitoring
+- Automated threat detection
+- Web Application Firewall protection
 
-   **macOS / Linux**
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+## Tech Stack
 
-5. Install Django:
-   ```bash
-   pip install -r requirements.txt
-   ```
+- Python
+- Django
+- HTML
+- CSS
+- JavaScript
+- Gunicorn
+- Nginx
+- Linux
+- Cloudflare
+- CrowdSec
+- Git / GitHub
 
-6. Run the initial setup:
-   ```bash
-   python manage.py migrate
-   python manage.py check
-   ```
+## Production Architecture
 
-7. Start the development server:
-   ```bash
-   python manage.py runserver
-   ```
+The production site uses a layered architecture:
 
-8. Open:
-   `http://127.0.0.1:8000/`
+**Cloudflare → Nginx → Security Layer → Gunicorn → Django**
 
-## Main files
+Backend application services are not directly exposed to the public Internet.
 
-- `website/templates/website/home.html`
-- `website/static/website/css/style.css`
-- `website/static/website/js/main.js`
-- `website/static/website/images/edgar-portrait.png`
+## Security
 
-## Personalize
+Security measures include:
 
-Replace the placeholder LinkedIn `href="#"` values in `home.html` with your real LinkedIn URL.
+- Reverse-proxy isolation
+- Real-client IP handling
+- Behavioral threat detection
+- Nginx remediation
+- CrowdSec AppSec / Web Application Firewall
+- Protected runtime secrets
+- HTTPS through Cloudflare
 
-The page uses a Google Fonts import for Inter and Birthstone. Remove the `@import`
-line in `style.css` if you later choose to self-host fonts.
+Sensitive production configuration, credentials, API keys, IP addresses, internal hostnames, and infrastructure details are not stored in this repository.
+
+## Development Process
+
+This project has been developed through hands-on coding, testing, debugging, deployment, and security configuration.
+
+AI-assisted technical guidance has also been used during development and troubleshooting. Configuration changes and tests are reviewed and performed manually.
+
+## Local Development
+
+These commands are for developers who want to run the project locally. They are not required for the live production site.
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+Then add a blank line and your next heading:
+```
+### Windows PowerShell
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
