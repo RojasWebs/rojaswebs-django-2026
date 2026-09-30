@@ -68,10 +68,51 @@ These commands are for developers who want to run the project locally. They are 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-Then add a blank line and your next heading:
 ```
+
 ### Windows PowerShell
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Django setup
+
+```bash
+python manage.py migrate
+python manage.py check
+```
+
+### Start the local development server
+
+```bash
+python manage.py runserver
+```
+
+Then open the local development site at:
+
+`http://127.0.0.1:8000/`
+
+> `127.0.0.1` is the local loopback address. It refers only to the computer running Django and is not a public Internet address.
+
+## Main Project Files
+
+- `website/templates/website/home.html`
+- `website/static/website/css/style.css`
+- `website/static/website/js/main.js`
+
+## Links
+
+- Website: [RojasWebs.com](https://rojaswebs.com)
+- GitHub: [RojasWebs](https://github.com/RojasWebs)
+
+## Status
+
+Actively developed and maintained.
