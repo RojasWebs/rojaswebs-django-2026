@@ -203,6 +203,14 @@ a {
     stroke-width: 1.5;
 }
 
+.social-links svg {
+    width: 36px;
+    height: 36px;
+    fill: var(--dark);
+    stroke: var(--dark);
+    stroke-width: 1.5;
+}
+
 .social-links .icon-cutout {
     fill: white;
     stroke: white;
