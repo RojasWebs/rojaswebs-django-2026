@@ -442,7 +442,7 @@ h2 {
 
 .footer-email {
     color: #fff;
-    text-underline-offset: 4px;
+    text-decoration: none;
     overflow-wrap: anywhere;
 }
 
@@ -671,7 +671,25 @@ h2 {
 .blog-empty h2 { margin-top: 0; }
 .blog-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
 .blog-pagination a { color: var(--accent); }
-.blog-article { max-width: 760px; margin: 0 auto; }
+.blog-article { position: relative; isolation: isolate; max-width: 760px; margin: 0 auto; }
+.blog-article::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 12rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 740px);
+    aspect-ratio: 1;
+    background: url("../images/rojaswebs-watermark-600.png") center / contain no-repeat;
+    opacity: .075;
+    mix-blend-mode: multiply;
+    border-radius: 50%;
+    pointer-events: none;
+}
+@media (max-width: 720px) {
+    .blog-article::before { top: 14rem; width: 100%; }
+}
 .blog-article-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-top: 2rem; }
 .blog-byline { color: var(--muted); font-size: .85rem; }
 .blog-byline span { margin: 0 .5rem; }
