@@ -1,0 +1,27 @@
+{% extends 'website/base_blog.html' %}
+{% block content %}
+    <header class="blog-intro">
+        <p class="eyebrow">The RojasWebs notebook</p>
+        <h1>Build. Learn. Write.</h1>
+        <p class="blog-lead">A working journal of web development, Django, and the lessons that come from making things.</p>
+        <a class="blog-feed" href="{% url 'website:blog_feed' %}">Subscribe via RSS</a>
+    </header>
+    <div class="blog-grid">
+        {% for post in page_obj %}
+            {% include 'website/_post_card.html' %}
+        {% empty %}
+            <div class="blog-empty">
+                <h2>A new chapter starts here.</h2>
+                <p>First posts are on the way. In the meantime, take a look at what I’m building.</p>
+                <a href="{% url 'website:home' %}#projects">Explore my projects →</a>
+            </div>
+        {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+        <nav class="blog-pagination" aria-label="Blog pages">
+            {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">← Newer posts</a>{% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Older posts →</a>{% endif %}
+        </nav>
+    {% endif %}
+{% endblock %}

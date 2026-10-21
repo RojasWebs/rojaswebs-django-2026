@@ -20,3 +20,6 @@ staticfiles/
 # Editors
 .vscode/
 .idea/
+
+!.env.example
+*.sqlite3*

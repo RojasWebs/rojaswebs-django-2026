@@ -1,0 +1,16 @@
+{% extends 'website/base_blog.html' %}
+{% block title %}{{ post.title }} | RojasWebs{% endblock %}
+{% block description %}{{ post.summary }}{% endblock %}
+{% block content %}
+    <article class="blog-article">
+        <a class="blog-back" href="{% url 'website:blog' %}">← All posts</a>
+        <header class="blog-article-header">
+            {% if post.category %}<p class="eyebrow">{{ post.category }}</p>{% endif %}
+            <h1>{{ post.title }}</h1>
+            <p class="blog-byline">By Edgar Rojas <span aria-hidden="true">·</span> <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:"F j, Y" }}</time></p>
+            {% if post.excerpt %}<p class="blog-lead">{{ post.excerpt }}</p>{% endif %}
+        </header>
+        <div class="blog-body">{{ post.body|linebreaks }}</div>
+        <div class="blog-article-footer"><a href="{% url 'website:home' %}#contact">Have a question about this post? Get in touch →</a></div>
+    </article>
+{% endblock %}

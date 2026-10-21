@@ -1,0 +1,9 @@
+<article class="blog-card">
+    <div class="blog-meta">
+        <time datetime="{{ post.published_at|date:'c' }}">{{ post.published_at|date:"F j, Y" }}</time>
+        {% if post.category %}<span>{{ post.category }}</span>{% endif %}
+    </div>
+    <{{ heading_tag|default:'h2' }}><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></{{ heading_tag|default:'h2' }}>
+    <p>{{ post.summary }}</p>
+    <a class="blog-read" href="{{ post.get_absolute_url }}" aria-label="Read {{ post.title }}">Read the story <span aria-hidden="true">→</span></a>
+</article>

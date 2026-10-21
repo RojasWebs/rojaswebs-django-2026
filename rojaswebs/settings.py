@@ -76,3 +76,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Contact delivery credentials belong in the private server environment.
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
+CONTACT_FROM_EMAIL = os.environ.get('CONTACT_FROM_EMAIL', 'RojasWebs Contact Form <contact@rojaswebs.com>')
+CONTACT_TO_EMAIL = os.environ.get('CONTACT_TO_EMAIL', 'contact@rojaswebs.com')
+DATA_UPLOAD_MAX_MEMORY_SIZE = 65536

@@ -116,3 +116,12 @@ Then open the local development site at:
 ## Status
 
 Actively developed and maintained.
+
+
+## Contact form and blog
+
+The contact form uses Resend. Set `RESEND_API_KEY` in the server's private environment. Optional `CONTACT_FROM_EMAIL` and `CONTACT_TO_EMAIL` override the existing verified sender and destination. The sender must be authorized by Resend. Never commit API keys or private environment files. The form validates bounded inputs, preserves input on errors, requires CSRF protection, and applies a database-backed submission limit and honeypot. It only confirms delivery after Resend accepts the request; verify actual inbox receipt after deployment. Logs contain generic delivery status only, never provider errors or message contents.
+
+Open `/admin/` and select **Posts** to write a blog entry. New entries default to **Draft**. Supply a title, unique slug, and plain-text body; blank lines separate paragraphs. Set **Published** to make it public. Leaving the publication date blank publishes immediately; a future date schedules it. Draft and scheduled entries stay out of public pages and RSS until their publication time. Entries are available at `/blog/`, with RSS at `/blog/feed/`. No sample posts are published automatically.
+
+Before deployment, back up the existing database and private environment. Install the repository's pinned dependencies, then run `python manage.py check`, `python manage.py test website`, `python manage.py migrate`, and `python manage.py collectstatic --noinput`. Confirm the `website_post` and `website_contactthrottle` tables actually exist before restarting the application service. Retain the existing service, proxy, domain, and secret configuration. Test a real contact inquiry and confirm receipt; check a draft stays private and a published post appears. If an admin account is needed, create it interactively with `python manage.py createsuperuser` and keep its credentials private.

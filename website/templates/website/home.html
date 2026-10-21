@@ -25,6 +25,7 @@
             <a href="#about">About</a>
             <a href="#learning">Learning</a>
             <a href="#projects">Projects</a>
+            <a href="{% url 'website:blog' %}">Blog</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -174,6 +175,22 @@
             </div>
         </section>
 
+        <section class="blog-home section-anchor" aria-labelledby="blog-heading">
+            <div class="section-heading">
+                <p class="eyebrow">From the notebook</p>
+                <h2 id="blog-heading">The latest from my blog</h2>
+                <p>Things I’m building, lessons I’m learning, and notes along the way.</p>
+            </div>
+            <div class="blog-grid">
+                {% for post in latest_posts %}
+                    {% include 'website/_post_card.html' with heading_tag='h3' %}
+                {% empty %}
+                    <p class="blog-empty">The notebook is open. First posts are coming soon.</p>
+                {% endfor %}
+            </div>
+            <p class="blog-home-link"><a class="button button-secondary" href="{% url 'website:blog' %}">Visit the blog <span aria-hidden="true">&nbsp;→</span></a></p>
+        </section>
+
         <section id="contact" class="contact section-anchor reveal-section">
             <div class="section-heading">
                 <p class="eyebrow">Contact</p>
@@ -192,27 +209,26 @@
                 {% endfor %}
             {% endif %}
 
-            <form class="contact-form" method="post" action="#contact">
+            <form class="contact-form" method="post" action="{% url 'website:home' %}#contact">
                 {% csrf_token %}
-
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" value="{{ form_name|default:'' }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="{{ form_email|default:'' }}" required>
-                
-                {% if email_error %}
-                    <p class="form-error">{{ email_error }}</p>
+                {% if form.errors %}
+                    <div class="form-error-summary" role="alert">
+                        <p>Please review your message.</p>
+                        {{ form.non_field_errors }}
+                    </div>
                 {% endif %}
-            </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" required>{{ form_message|default:'' }}</textarea>
-                </div>
-
+                {% for field in form %}
+                    {% if field.name == 'website' %}
+                        <div class="contact-trap" aria-hidden="true">{{ field.label_tag }}{{ field }}</div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <p class="contact-notice">Please keep your message to general inquiries and avoid sharing sensitive personal information.</p>
                 <button type="submit">Send Message</button>
             </form>
         </section>
