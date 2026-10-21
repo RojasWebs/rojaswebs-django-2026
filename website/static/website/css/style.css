@@ -347,11 +347,41 @@ h2 {
 }
 
 .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .project-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     padding: 2.2rem;
+}
+
+.project-card-rojaswebs::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25rem;
+    aspect-ratio: 1;
+    background: url("../images/rojaswebs-watermark-600.png") left center / contain no-repeat;
+    opacity: .09;
+    mix-blend-mode: multiply;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.project-thumbnail {
+    display: block;
+    width: calc(100% + 4.4rem);
+    max-width: none;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin: -2.2rem -2.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
 }
 
 .project-type {
@@ -491,6 +521,8 @@ h2 {
 }
 
 @media (max-width: 960px) {
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
     .about {
         grid-template-columns: 1fr;
     }
