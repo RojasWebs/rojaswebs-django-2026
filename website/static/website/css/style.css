@@ -393,11 +393,90 @@ h2 {
 }
 
 .site-footer {
-    padding: 1rem 5vw;
+    padding: 3rem 5vw 1.25rem;
     background: #1f1f1f;
     color: #d7d7d7;
-    text-align: center;
-    font-size: .9rem;
+    font-size: .875rem;
+}
+
+.footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr .8fr 1.2fr;
+    gap: 2.5rem;
+}
+
+.footer-brand {
+    display: inline-block;
+    font-family: "Birthstone", cursive;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-description {
+    max-width: 34ch;
+    margin: .75rem 0 0;
+    color: #bec5c6;
+    line-height: 1.7;
+}
+
+.site-footer .footer-title {
+    margin: .2rem 0 .8rem;
+    font-size: .72rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #a4ccd2;
+}
+
+.footer-nav a {
+    display: block;
+    width: fit-content;
+    padding: .2rem 0;
+    text-decoration: none;
+}
+
+.footer-email {
+    color: #fff;
+    text-underline-offset: 4px;
+    overflow-wrap: anywhere;
+}
+
+.site-footer a:hover { color: #b4e0e6; }
+.site-footer a:focus-visible { outline: 2px solid #b4e0e6; outline-offset: 5px; }
+
+.footer-bottom {
+    max-width: 1240px;
+    margin: 2rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .6rem 1.5rem;
+    color: #adb6b7;
+    font-size: .75rem;
+}
+
+.footer-bottom p { margin: 0; }
+
+@media (max-width: 720px) {
+    .site-footer { padding: 2.5rem 6vw 1.25rem; }
+    .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem; }
+    .footer-about { grid-column: 1 / -1; }
+    .footer-description { font-size: .825rem; }
+    .footer-email { font-size: .8rem; }
+    .footer-bottom { flex-direction: column; margin-top: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+    .footer-nav .footer-title { flex-basis: 100%; margin-bottom: .3rem; }
 }
 
 .reveal-section {

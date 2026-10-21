@@ -1,0 +1,24 @@
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-about">
+            <a class="footer-brand" href="{% url 'website:home' %}">RojasWebs</a>
+            <p class="footer-description">Web development, project notes, and lessons learned along the way.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <h2 class="footer-title">Explore</h2>
+            <a href="{% url 'website:home' %}#about">About</a>
+            <a href="{% url 'website:home' %}#projects">Projects</a>
+            <a href="{% url 'website:blog' %}">Blog</a>
+            <a href="{% url 'website:home' %}#contact">Contact</a>
+        </nav>
+        <div class="footer-contact">
+            <h2 class="footer-title">Get in touch</h2>
+            <a class="footer-email" href="mailto:contact@rojaswebs.com">contact@rojaswebs.com</a>
+            <p class="footer-description">Have a project or a question? Send me a note.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; {% now "Y" %} RojasWebs. All rights reserved.</p>
+        <p>Created by Edgar Rojas <span aria-hidden="true">&middot;</span> Built with Django</p>
+    </div>
+</footer>
