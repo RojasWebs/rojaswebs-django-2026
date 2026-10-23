@@ -235,7 +235,7 @@ h2 {
     line-height: 1.05;
 }
 
-.about-copy > p:not(.eyebrow) {
+.about-copy>p:not(.eyebrow) {
     max-width: 700px;
     margin: 0 0 1.6rem;
     font-size: 1.08rem;
@@ -417,7 +417,7 @@ h2 {
 .contact-links a {
     min-width: 150px;
     padding: .85rem 1.25rem;
-    border: 1px solid rgba(255,255,255,.45);
+    border: 1px solid rgba(255, 255, 255, .45);
     text-decoration: none;
     font-weight: 700;
 }
@@ -564,7 +564,7 @@ h2 {
         gap: 0;
         padding: .75rem 5vw 1rem;
         background: white;
-        border-bottom: 1px solid rgba(0,0,0,.08);
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
     }
 
     .site-nav.open {
