@@ -761,6 +761,7 @@ h2 {
     box-sizing: border-box;
     padding: .9rem 1rem;
     border: 1px solid #666;
+    border-radius: 10px;
     background: var(--input-background);
     color: var(--input-text);
     font: inherit;
