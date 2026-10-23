@@ -1,0 +1,15 @@
+<script>
+    (() => {
+        const root = document.documentElement;
+        let theme = "dark";
+
+        try {
+            theme = localStorage.getItem("rojaswebs-theme") === "light" ? "light" : "dark";
+        } catch (error) {
+            // Dark mode remains the default if browser storage is unavailable.
+        }
+
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+    })();
+</script>

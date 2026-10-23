@@ -1,3 +1,35 @@
+const root = document.documentElement;
+const themeToggle = document.querySelector(".theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function applyTheme(theme, persist = false) {
+    const isDark = theme === "dark";
+    const nextTheme = isDark ? "light" : "dark";
+    const label = `Switch to ${nextTheme} mode`;
+
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    themeToggle?.setAttribute("aria-label", label);
+    themeToggle?.setAttribute("aria-pressed", String(isDark));
+    themeToggle?.setAttribute("title", label);
+    themeColor?.setAttribute("content", isDark ? "#0f1519" : "#ffffff");
+
+    if (persist) {
+        try {
+            localStorage.setItem("rojaswebs-theme", theme);
+        } catch (error) {
+            // The visual toggle still works when browser storage is unavailable.
+        }
+    }
+}
+
+applyTheme(root.dataset.theme === "light" ? "light" : "dark");
+
+themeToggle?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme, true);
+});
+
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");

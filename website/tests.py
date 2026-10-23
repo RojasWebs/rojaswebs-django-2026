@@ -128,3 +128,17 @@ class BlogTests(TestCase):
     def test_post_rejects_submission_and_link_resolves(self):
         self.assertEqual(reverse('website:blog'), '/blog/')
         self.assertEqual(self.client.post(self.public.get_absolute_url(), {}).status_code, 405)
+
+
+class ThemeTests(TestCase):
+    def test_theme_controls_are_available_on_home_and_blog(self):
+        for url in ('/', '/blog/'):
+            response = self.client.get(url)
+            self.assertContains(response, 'class="theme-toggle"')
+            self.assertContains(response, 'aria-label="Switch to light mode"')
+            self.assertContains(response, 'rojaswebs-theme')
+            self.assertContains(response, 'name="theme-color"')
+
+    def test_dark_mode_is_the_script_default(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'let theme = "dark"')
