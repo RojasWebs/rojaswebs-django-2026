@@ -163,7 +163,7 @@ class BrandTests(TestCase):
 
     def test_birthstone_font_is_self_hosted(self):
         self.assertIsNotNone(finders.find('website/fonts/Birthstone-Regular.ttf'))
-        self.assertContains(self.client.get('/'), 'creator-disclosure-1')
+        self.assertContains(self.client.get('/'), 'responsive-buttons-1')
 
 
 class TransparencyCopyTests(TestCase):
