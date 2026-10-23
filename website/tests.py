@@ -2,6 +2,7 @@ from datetime import timedelta
 from unittest.mock import patch
 
 from django.contrib import admin
+from django.contrib.staticfiles import finders
 from django.db import DatabaseError
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
@@ -152,3 +153,17 @@ class BrandTests(TestCase):
             self.assertContains(response, 'class="brand-mark"')
             self.assertContains(response, 'class="brand-rojas"')
             self.assertContains(response, 'rel="apple-touch-icon"')
+
+    def test_birthstone_font_is_self_hosted(self):
+        self.assertIsNotNone(finders.find('website/fonts/Birthstone-Regular.ttf'))
+        self.assertContains(self.client.get('/'), 'self-hosted-fonts-1')
+
+
+class TransparencyCopyTests(TestCase):
+    def test_about_and_footer_disclose_ai_assistance(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'Web Creator')
+        self.assertContains(response, 'part of a new generation of people')
+        self.assertContains(response, 'At this remarkable point in AI')
+        self.assertContains(response, 'operating a small home lab')
+        self.assertContains(response, 'Built with Django and AI-assisted development')
