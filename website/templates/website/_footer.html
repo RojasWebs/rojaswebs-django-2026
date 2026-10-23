@@ -1,7 +1,11 @@
+{% load static %}
 <footer class="site-footer">
     <div class="footer-inner">
         <div class="footer-about">
-            <a class="footer-brand" href="{% url 'website:home' %}">RojasWebs</a>
+            <a class="footer-brand" href="{% url 'website:home' %}" aria-label="RojasWebs home">
+                <img class="brand-mark" src="{% static 'website/images/rw-mark-red.png' %}" alt="" width="46" height="46">
+                <span><span class="brand-rojas">Rojas</span>Webs</span>
+            </a>
             <p class="footer-description">Web development, project notes, and lessons learned along the way.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">

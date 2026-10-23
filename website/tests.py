@@ -142,3 +142,13 @@ class ThemeTests(TestCase):
     def test_dark_mode_is_the_script_default(self):
         response = self.client.get('/')
         self.assertContains(response, 'let theme = "dark"')
+
+
+class BrandTests(TestCase):
+    def test_logo_mark_and_favicon_appear_on_home_and_blog(self):
+        for url in ('/', '/blog/'):
+            response = self.client.get(url)
+            self.assertContains(response, 'rw-mark-red.png')
+            self.assertContains(response, 'class="brand-mark"')
+            self.assertContains(response, 'class="brand-rojas"')
+            self.assertContains(response, 'rel="apple-touch-icon"')

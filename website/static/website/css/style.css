@@ -10,6 +10,7 @@
     --text: #edf4f5;
     --muted: #a9b9bd;
     --accent: #70cddd;
+    --brand-red: #f04b5c;
     --accent-contrast: #071619;
     --border: #33434a;
     --header-background: rgba(15, 21, 25, 0.94);
@@ -37,6 +38,7 @@ html[data-theme="light"] {
     --text: #2c2c2c;
     --muted: #666666;
     --accent: #17788c;
+    --brand-red: #a91f30;
     --accent-contrast: #ffffff;
     --border: #d7dee1;
     --header-background: rgba(255, 255, 255, 0.94);
@@ -122,9 +124,25 @@ a {
 }
 
 .brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: .55rem;
     font-family: "Birthstone", cursive;
     font-size: 2.2rem;
+    line-height: 1;
     text-decoration: none;
+}
+
+.brand-mark {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .28));
+}
+
+.brand-rojas {
+    color: var(--brand-red);
 }
 
 .site-nav {
@@ -528,12 +546,19 @@ h2 {
 }
 
 .footer-brand {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
     font-family: "Birthstone", cursive;
     font-size: 2.4rem;
     line-height: 1.2;
     text-decoration: none;
     color: #fff;
+}
+
+.footer-brand .brand-mark {
+    width: 46px;
+    height: 46px;
 }
 
 .footer-description {
