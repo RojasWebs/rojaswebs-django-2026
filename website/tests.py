@@ -97,13 +97,20 @@ class BlogTests(TestCase):
         self.assertEqual(self.client.get(self.draft.get_absolute_url()).status_code, 404)
         self.assertEqual(self.client.get(self.future.get_absolute_url()).status_code, 404)
 
-    def test_article_renders_paragraphs_and_escapes_html(self):
-        self.public.body = '<script>alert("test")</script>\n\nAnother paragraph.'
+    def test_article_renders_paragraphs_escapes_html_and_links_urls(self):
+        self.public.body = '<script>alert("test")</script>\n\nAnother paragraph.\n\nhttps://www.loc.gov/example/'
         self.public.save()
         response = self.client.get(self.public.get_absolute_url())
         self.assertContains(response, '&lt;script&gt;')
         self.assertNotContains(response, '<script>alert(')
         self.assertContains(response, '<p>Another paragraph.</p>', html=True)
+        self.assertContains(response, 'href="https://www.loc.gov/example/"')
+
+    def test_article_discloses_ai_writing_assistance(self):
+        response = self.client.get(self.public.get_absolute_url())
+        self.assertContains(response, 'AI writing disclosure:')
+        self.assertContains(response, 'talking through those ideas with AI')
+        self.assertContains(response, 'grammar, and spelling for clarity')
 
     def test_publish_defaults_to_now(self):
         self.assertIsNotNone(self.public.published_at)
@@ -156,7 +163,7 @@ class BrandTests(TestCase):
 
     def test_birthstone_font_is_self_hosted(self):
         self.assertIsNotNone(finders.find('website/fonts/Birthstone-Regular.ttf'))
-        self.assertContains(self.client.get('/'), 'self-hosted-fonts-1')
+        self.assertContains(self.client.get('/'), 'creator-disclosure-1')
 
 
 class TransparencyCopyTests(TestCase):
