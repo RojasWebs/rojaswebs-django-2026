@@ -367,11 +367,13 @@ h2 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
-    padding: .85rem 1.5rem;
+    min-height: 2.625rem;
+    padding: .45rem 1.2rem;
     text-decoration: none;
     font-weight: 700;
+    line-height: 1.2;
     border: 1px solid var(--primary-background);
+    border-radius: 10px;
     transition: transform 180ms ease, background 180ms ease, color 180ms ease;
 }
 
@@ -777,12 +779,15 @@ h2 {
 
 .contact-form button {
     display: inline-block;
-    padding: .9rem 1.5rem;
+    min-height: 2.625rem;
+    padding: .45rem 1.2rem;
     border: 0;
+    border-radius: 10px;
     background: var(--accent);
     color: var(--accent-contrast);
     font: inherit;
     font-weight: 700;
+    line-height: 1.2;
     cursor: pointer;
 }
 
