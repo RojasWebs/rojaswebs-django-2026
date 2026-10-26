@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db.models import Case, IntegerField, Value, When
+
 from .models import Post
 
 
@@ -10,6 +12,15 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at', 'updated_at')
     date_hierarchy = 'published_at'
+    ordering = (
+        Case(
+            When(status=Post.Status.PUBLISHED, then=Value(0)),
+            default=Value(1),
+            output_field=IntegerField(),
+        ),
+        'published_at',
+        'created_at',
+    )
     fieldsets = (
         (None, {'fields': ('title', 'slug', 'category', 'excerpt', 'body')}),
         ('Publishing', {'fields': ('status', 'published_at')}),

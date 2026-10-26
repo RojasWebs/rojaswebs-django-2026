@@ -1,7 +1,8 @@
-from datetime import timedelta
+from datetime import datetime, timedelta
 from unittest.mock import patch
 
 from django.contrib import admin
+from django.contrib.auth import get_user_model
 from django.contrib.staticfiles import finders
 from django.db import DatabaseError
 from django.test import Client, TestCase, override_settings
@@ -136,6 +137,45 @@ class BlogTests(TestCase):
     def test_post_rejects_submission_and_link_resolves(self):
         self.assertEqual(reverse('website:blog'), '/blog/')
         self.assertEqual(self.client.post(self.public.get_absolute_url(), {}).status_code, 405)
+
+
+class PostAdminOrderingTests(TestCase):
+    def test_default_order_is_oldest_published_first_and_drafts_last(self):
+        october_20 = timezone.make_aware(datetime(2026, 10, 20, 9))
+        october_23 = timezone.make_aware(datetime(2026, 10, 23, 9))
+        Post.objects.create(
+            title='October 23 post',
+            slug='october-23-post',
+            body='Published second.',
+            status=Post.Status.PUBLISHED,
+            published_at=october_23,
+        )
+        Post.objects.create(
+            title='Draft post',
+            slug='draft-post',
+            body='Not published yet.',
+        )
+        Post.objects.create(
+            title='October 20 post',
+            slug='october-20-post',
+            body='Published first.',
+            status=Post.Status.PUBLISHED,
+            published_at=october_20,
+        )
+        user = get_user_model().objects.create_superuser(
+            username='admin',
+            email='admin@example.com',
+            password='test-password',
+        )
+        self.client.force_login(user)
+
+        response = self.client.get(reverse('admin:website_post_changelist'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            [post.title for post in response.context['cl'].result_list],
+            ['October 20 post', 'October 23 post', 'Draft post'],
+        )
 
 
 class ThemeTests(TestCase):
